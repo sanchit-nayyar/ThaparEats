@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q</title>
+</head>
+<body>
+	<table border="2">
+		<tr>
+			<th>Order ID</td>
+			<th>Amount</th>
+			<th>Restaurant</th>
+			<th>Payment Status</th>
+			<th>Delivery Status</th>
+			<th>Ordered On</th>
+		</tr>
+		{% for order in orders %}
+		<tr>
+			<th>{{ order.0 }}</th>
+			<td>{{ order.2 }}</td>
+			<td>{{ order.3 }}</td>
+			<td>{{ order.4 }}</td>
+			<td>{{ order.5 }}</td>
+			<td>{{ order.6 }}</td>
+		</tr>	
+		{% endfor %}
+	</table>
+	<form method="POST" action="/login/trackOrders/">{% csrf_token %}
+		<input type="hidden" name="user" value="{{ user }}">
+		<button type="submit">View Pending Orders</button>
+	</form>
+	<a href="/">logout</a>
+</body>
+</html>

@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q_App</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_forms.css' %}">
+</head>
+<body>
+	<header>
+		Thapar Eats: Register
+	</header>
+	<form method="POST" action="/register_submit/" id="lgnfrm">{% csrf_token %}
+		<input type="text" name="roll" placeholder="Roll Number"><br>
+		<input type="text" name="uname" placeholder="Username"><br>
+		<input type="password" name="wpd" placeholder="Webkiosk Password"><br>
+		<input type="password" name="psk" placeholder="ThaparEats Password"><br>
+		<input type="password" name="pskcnf" placeholder="Confirm ThaparEats Password"><br>
+		<select name="hoscode">
+			<option disabled selected>---Hostel---</option>
+			<option value="A">Hostel A</option>
+			<option value="B">Hostel B</option>
+			<option value="C">Hostel C</option>
+			<option value="D">Hostel D</option>
+			<option value="E">Hostel E</option>
+			<option value="G">Hostel G</option>
+			<option value="H">Hostel H</option>
+			<option value="I">Hostel I</option>
+			<option value="J">Hostel J</option>
+			<option value="K">Hostel K</option>
+			<option value="L">Hostel L</option>
+			<option value="M">Hostel M</option>
+			<option value="N">Hostel N</option>
+			<option value="PG">Hostel PG</option>
+		</select><br>
+		<input type="text" name="mail" placeholder="Mail ID"><br>
+		<input type="text" name="cno" placeholder="Phone Number"><br>
+		<button type="submit">Register</button>
+	</form>
+	<br><br>
+	<a href="/">Go Home</a>
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/forms.js' %}"></script>
+</body>
+</html>

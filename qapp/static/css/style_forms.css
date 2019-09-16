@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Allerta+Stencil');
+
+body{
+	text-align: center;
+}
+
+header{
+	font-family: 'Allerta Stencil', sans-serif;
+	font-size: 3em;
+}
+
+a{
+	border: 1px solid black;
+	padding: 2px;
+	margin: 5px;
+	text-decoration: none;
+	color: #000000;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-radius: 4px;
+	background-color: #E6E6E6;
+	box-shadow: 1px 1px;
+}
+
+a:active{
+	box-shadow: -1px -1px;
+}
+
+input, select{
+	width: 30%;
+}
+
+select{
+	text-align: center;
+}
+
+option{
+	text-align: left;
+}

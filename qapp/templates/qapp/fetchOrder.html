@@ -1,0 +1,47 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q_App</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_forms.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_process.css' %}">
+</head>
+<body>
+	<header>
+		Thapar Eats: Place Order
+	</header>
+	<div class="userDetails">
+		Welcome {{ user.uname }}<br><br>
+		<a href="/">Logout</a>
+	</div>
+	<div class="action"><br><br>
+		Ordering for Hostel {{ user.hos_code }}<br>
+		Restaurant #{{ restaurant_id }} selected<br>
+		Confirm Order. Current Total = INR <div id="total">0</div>
+	</div><br>
+	<form method="POST" action="placeOrder/"> {% csrf_token %}
+		<table>
+			<tr>
+				<th>Quantity</th>
+				<th>Price</th>
+				<th>Item Name</th>
+			</tr>
+			{% for item in menu %}
+			<tr id="p_{{ item.item_id }}">
+				<td>
+					<input required type="text" class="qty"  id="i_{{ item.item_id }}" value="0" name="{{ item.item_id }}">
+				</td>
+				<td class="iprice">{{ item.price }}</td>
+				<td class="iname">{{ item.item_name }}</td>
+			</tr>
+			{% endfor %}
+		</table>
+		<input type="hidden" name="user" value="{{ user }}">
+		<input type="hidden" name="restaurant_id" value="{{ restaurant_id }}">
+		<button type="submit">Place Order</button>
+	</form>
+
+	<script type="text/javascript" src="{% static 'js/update_qty.js' %}"></script>
+</body>
+</html>

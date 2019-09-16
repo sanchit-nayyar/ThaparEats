@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Heuy Now</title>
+</head>
+<body>
+	<form method="POST" action="/register/"> {% csrf_token %}
+		<input type="text" name="rno" placeholder="Roll Number">
+		<input type="text" name="nm" placeholder="Full Name">
+		<input type="text" name="cno" placeholder="Contact Number">
+		<select name="hostel">
+			<optgroup>
+				<option disabled selected>Choose Hostel</option>
+			</optgroup>
+			<optgroup>
+				{% for hos in  hName %}
+					<option value="{{ hos }}">{{ hos }}</option>
+				{% endfor %}
+			</optgroup>
+		</select>
+		<button type="submit">Register</button>
+	</form>
+	OR
+	<form method="POST" action="/login/"> {% csrf_token %}
+		<input type="text" name="rno" placeholder="Roll Number">
+		<input type="password" name="pd" placeholder="Password">
+		<button type="submit">Log In: {{ execCode }}</button>
+	</form>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q_App</title>
+</head>
+<body>
+	Welcome {{ user.restaurant_name }}.<br><br>
+	<table border="2">
+		<tr>
+			<th>Order ID</th>
+			<th>Hostel</th>
+			<th>Amount</th>
+			<th>Payment Status</th>
+			<th>Delivery Status</th>
+			<th>Order Time</th>
+			<th>Contact</th>
+		</tr>
+		{% for ord in ords %}
+		<tr>
+			<th>{{ ord.0 }}</th>
+			<td>{{ ord.1 }}</td>
+			<td>{{ ord.2 }}</td>
+			<td>{{ ord.4 }}</td>
+			<td>{{ ord.5 }}</td>
+			<td>{{ ord.6 }}</td>
+			<td>{{ ord.7 }}</td>
+			{% if ord.4 == 'UNPAID' %}
+				<td>
+					<form method="POST" action="/markPaid/">{% csrf_token %}
+						<input type="hidden" name="o_id" value="{{ ord.0 }}">
+						<button type="submit">Mark Paid</button>
+					</form>
+				</td>
+			{% else %}
+				<td></td>
+			{% endif %}
+			{% if ord.5 == 'RECIEVED' %}
+				<td>
+					<form method="POST" action="/markDispatched/">{% csrf_token %}
+						<input type="hidden" name="o_id" value="{{ ord.0 }}">
+						<button type="submit">Mark Dispatched</button>
+					</form>
+				</td>
+			{% endif %}
+			{% if ord.5 == 'DISPATCHED' %}
+				<td>
+					<form method="POST" action="/markDelivered/">{% csrf_token %}
+						<input type="hidden" name="o_id" value="{{ ord.0 }}">
+						<button type="submit">Mark Delivered</button>
+					</form>
+				</td>
+			{% endif %}
+			<td>
+				<form method="POST" action="/orderDetails/">{% csrf_token %} 
+					<input type="hidden" name="o_id" value="{{ ord.0 }}">
+					<button type="submit">Show Order Details</button>
+				</form>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+	<a href="/">Logout</a>
+</body>
+</html>

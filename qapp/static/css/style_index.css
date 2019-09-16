@@ -1,0 +1,40 @@
+.messagePrompt{
+	position: fixed;
+	height: 120px;
+	font-size: 40px;
+	text-align: center;
+	width: 100%;
+	cursor: default;
+	z-index: 3;
+}
+
+.content{
+	width: 40%;
+	margin: auto;
+	background-color: #000000;
+	color: #FFFFFF;
+	border: 1px solid black;
+	height: 200px;
+	padding-top: 20px;
+}
+
+.hideImg{
+	position: fixed;
+	top: 0;
+	left: 0;
+	opacity: 0.3;
+	z-index: 1;
+	height: 100%;
+	width: 100%;
+}
+
+.closeImg{
+	height: 25px;
+	width: 25px;
+	position: fixed;
+	right: 20px;
+	top: 20px;
+	cursor: pointer;
+	z-index: 3;
+	background-color: transparent;
+}

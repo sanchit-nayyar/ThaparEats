@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q_App</title>
+</head>
+<body>
+	Order #{{ odets.0.0 }} <Br><br>
+	{% for o in odets %}
+		{{ o.1 }}: {{ o.2 }}<br>
+	{% endfor %}
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Q_App</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_forms.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style_process.css' %}">
+</head>
+<body>
+	<header>
+		Thapar Eats: Choose Restaurant
+	</header>
+	<div class="userDetails">
+		Welcome {{ user.uname }}<br><br>
+		<a href="/">Logout</a>
+	</div>
+	<div class="additional_navigation">
+		<form method="POST" action="trackOrders/">{% csrf_token %}
+			<input type="hidden" name="user" value="{{ user }}">
+			<button type="submit">Track Existing Orders</button>
+		</form>
+		<form method="POST" action="prevOrders/">{% csrf_token %}
+			<input type="hidden" name="user" value="{{ user }}">
+			<button type="submit">View Previous Orders</button>
+		</form>
+	</div>
+	<div class="action"><br><br>
+		Ordering for Hostel {{ user.hos_code }}<br>
+		Select Restaurant
+	</div><br>
+	<form method="POST" action="fetchOrder/"> {% csrf_token %}
+		<select name="rstrt">
+			<option selected disabled>---Click to Choose Restaurant---</option>
+			{% for rst in restaurants %}
+				<option value="{{ rst.id }}">{{ rst.restaurant_name }}</option>
+			{% endfor %}
+		</select><br><br><br>
+		<input type="hidden" name="user" value="{{ user }}">
+		<button type="submit" class="proceed">Fetch Menu</button>
+	</form>
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+</body>
+</html>
